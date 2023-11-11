@@ -1,0 +1,72 @@
+{% include 'admin_header.html' %}
+
+<style>
+    /* Base styles */
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f0f0f0;
+        margin: 0;
+        padding: 0;
+    }
+
+    /* Styles for the table */
+    table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    table, th, td {
+        border: 1px solid #ddd;
+    }
+
+    th, td {
+        padding: 10px;
+        text-align: center;
+    }
+
+    th {
+        background-color: #0074cc;
+        color: #fff;
+    }
+
+    tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+
+    a {
+        text-decoration: none;
+        color: #0074cc;
+    }
+</style>
+
+<br><br><br><br>
+
+<form action="" method="POST">
+    {% csrf_token %}
+    <table align="center" border="1">
+        <tr>
+            <th>#</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Place</th>
+            <th>Phone</th>
+            <th>Email</th>
+            <th>Block</th>
+            <th>View Post</th>
+        </tr>
+        {% for i in qa %}
+        <tr>
+            <td>{{forloop.counter}}</td>
+            <td>{{i.fname}}</td>
+            <td>{{i.lname}}</td>
+            <td>{{i.place}}</td>
+            <td>{{i.phone}}</td>
+            <td>{{i.email}}</td>
+            <td>{{i.block.block}}</td>
+            <td colspan="2" align="center"><a href="admin_view_post?user_id={{i.user_id}}" class="btn btn-dark">POST</a></td>
+        </tr>
+        {% endfor %}
+    </table>
+</form>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+{% include 'footer.html' %}

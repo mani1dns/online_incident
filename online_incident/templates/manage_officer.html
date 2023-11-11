@@ -1,0 +1,91 @@
+{% include 'officer_header.html' %}
+
+<style>
+    /* Base styles */
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f0f0f0;
+        margin: 0;
+        padding: 0;
+    }
+
+    /* Styles for the form and table */
+    form {
+        margin-top: 50px;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    table, th, td {
+        border: 1px solid #ddd;
+    }
+
+    th, td {
+        padding: 10px;
+        text-align: center;
+    }
+
+    th {
+        background-color: #0074cc;
+        color: #fff;
+    }
+
+    tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+
+    input[type="text"],
+    input[type="email"] {
+        width: 100%;
+        padding: 5px;
+    }
+
+    input[type="submit"] {
+        background-color: #0074cc;
+        color: #fff;
+        border: none;
+        padding: 5px 10px;
+        cursor: pointer;
+    }
+</style>
+
+<body>
+    {% if q1 %}
+    <form action="" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <table align="center" border="1">
+            <tr>
+                <th>First Name</th>
+                <td><input type="text" name="fname" value="{{q1.fname}}"></td>
+            </tr>
+            <tr>
+                <th>Last Name</th>
+                <td><input type="text" name="lname" value="{{q1.lname}}"></td>
+            </tr>
+            <tr>
+                <th>Place</th>
+                <td><input type="text" name="place" value="{{q1.place}}"></td>
+            </tr>
+            <tr>
+                <th>Phone</th>
+                <td><input type="text" name="phone" value="{{q1.phone}}"></td>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td><input type="email" name="email" value="{{q1.email}}"></td>
+            </tr>
+            <tr>
+                <td colspan="2" align="center">
+                    <input type="submit" name="update" value="Update" class="btn btn-success">
+                </td>
+            </tr>
+        </table>
+    </form>
+    {% endif %}
+    <br><br><br><br><br><br><br><br><br><br><br><br><br>
+</body>
+
+{% include 'footer.html' %}

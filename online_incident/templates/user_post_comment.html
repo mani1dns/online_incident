@@ -1,0 +1,76 @@
+{% include 'user_header.html' %}
+
+<style>
+    /* Base styles */
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f0f0f0;
+        margin: 0;
+        padding: 0;
+    }
+
+    /* Styles for the table */
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 20px auto;
+    }
+
+    table, th, td {
+        border: 1px solid #ddd;
+    }
+
+    th, td {
+        padding: 10px;
+        text-align: center;
+    }
+
+    th {
+        background-color: #0074cc;
+        color: #fff;
+    }
+
+    tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+
+    /* Styles for the "Post," "Date," "Type," "Status," and "Comment" cells */
+    td {
+        max-width: 50%;
+        word-wrap: break-word;
+    }
+
+    /* Styles for the "Comment" link */
+    a {
+        text-decoration: none;
+        color: #0074cc;
+    }
+
+    a:hover {
+        text-decoration: underline;
+    }
+</style>
+
+<br><br><br>
+<table align="center" border="1">
+    <tr>
+        <th>#</th>
+        <th>POST</th>
+        <th>Date</th>
+        <th>Type</th>
+        <th>Status</th>
+        <th>Comment</th>
+    </tr>
+    {% for i in q1 %}
+    <tr>
+        <td>{{forloop.counter}}</td>
+        <td>{{i.post}}</td>
+        <td>{{i.date}}</td>
+        <td>{{i.type}}</td>
+        <td>{{i.status}}</td>
+        <td colspan="2" align="center"><a href="/comments?id={{i.post_id}}" class="btn btn-success">Comment</a></td>
+    </tr>
+    {% endfor %}
+</table>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+{% include 'footer.html' %}

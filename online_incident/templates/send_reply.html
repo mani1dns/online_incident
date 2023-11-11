@@ -1,0 +1,90 @@
+{% include 'admin_header.html' %}
+
+<style>
+    /* Base styles */
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f0f0f0;
+        margin: 0;
+        padding: 0;
+    }
+
+    /* Styles for the form and table */
+    form {
+        margin-top: 50px;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    table, th, td {
+        border: 1px solid #ddd;
+    }
+
+    th, td {
+        padding: 10px;
+        text-align: center;
+    }
+
+    th {
+        background-color: #0074cc;
+        color: #fff;
+    }
+
+    tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+
+    input[type="text"] {
+        width: 100%;
+        padding: 5px;
+    }
+
+    input[type="submit"] {
+        background-color: #0074cc;
+        color: #fff;
+        border: none;
+        padding: 5px 10px;
+        cursor: pointer;
+    }
+</style>
+
+{% if qa %}
+<form action="" method="POST" enctype="multipart/form-data">
+    <br><br><br><br><br><br><br><br><br><br><br><br>
+    <table border="1" align="center">
+        <tr>
+            <th>REPLY</th>
+            <td align="center">
+                <input type="text" name="text" value="{{qa.reply}}" required>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2" align="center">
+                <input type="submit" name="update" value="Update">
+            </td>
+        </tr>
+    </table>
+</form>
+{% else %}
+<form action="" method="POST" enctype="multipart/form-data">
+    <br><br><br><br><br><br><br><br><br><br><br><br>
+    <table border="1" align="center">
+        <tr>
+            <th>REPLY</th>
+            <td align="center">
+                <input type="text" name="reply" required>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2" align="center">
+                <input type="submit" name="submit" value="SEND">
+            </td>
+        </tr>
+    </table>
+</form>
+{% endif %}
+<br><br><br><br><br><br><br><br><br><br>
+{% include 'footer.html' %}

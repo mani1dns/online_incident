@@ -1,0 +1,147 @@
+{% include 'admin_header.html' %}
+
+<style>
+    /* Base styles */
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f0f0f0;
+        margin: 0;
+        padding: 0;
+    }
+
+    .content {
+        margin: 20px;
+        padding: 20px;
+        background-color: #fff;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+    }
+
+    /* Styles for forms */
+    .form-table {
+        width: 100%;
+    }
+
+    .form-table th {
+        text-align: left;
+        padding: 10px;
+    }
+
+    .form-table td {
+        padding: 10px;
+    }
+
+    .form-table select,
+    .form-table input[type="text"] {
+        width: 100%;
+        padding: 5px;
+    }
+
+    .submit-button {
+        background-color: #0074cc;
+        color: #fff;
+        border: none;
+        padding: 10px 20px;
+        cursor: pointer;
+    }
+
+    /* Styles for data table */
+    .data-table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    .data-table th, .data-table td {
+        padding: 10px;
+        border: 1px solid #ddd;
+    }
+
+    .action-link {
+        text-decoration: none;
+        color: #0074cc;
+    }
+</style>
+
+<div class="content">
+    {% if qz %}
+    <form action="" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <table class="form-table" align="center" border="1">
+            <tr>
+                <th>Name</th>
+                <td><input type="text" name="name" value="{{qz.name}}" required></td>
+            </tr>
+            <tr>
+                <th>Type</th>
+                <td><input type="text" name="type" value="{{qz.type}}" required></td>
+            </tr>
+            <tr>
+                <th>District</th>
+                <td>
+                    <select name="district">
+                        {% for i in q1 %}
+                        <option value="{{i.district_id}}">{{i.district}}</option>
+                        {% endfor %}
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" align="center"><input type="submit" name="update" class="submit-button" value="Update"></td>
+            </tr>
+        </table>
+    </form>
+    {% else %}
+    <form action="" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <table class="form-table" align="center" border="1">
+            <tr>
+                <th>Name</th>
+                <td><input type="text" name="name" required></td>
+            </tr>
+            <tr>
+                <th>Type</th>
+                <td><input type="text" name="type" required></td>
+            </tr>
+            <tr>
+                <th>District</th>
+                <td>
+                    <select name="district">
+                        {% for i in q1 %}
+                        <option value="{{i.district_id}}">{{i.district}}</option>
+                        {% endfor %}
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" align="center"><input type="submit" name="submit" class="btn btn-primary" value="Submit"></td>
+            </tr>
+        </table>
+    </form>
+
+    {% endif %}
+
+    <br><br><br><br>
+
+    <table class="data-table" align="center" border="1">
+        <tr>
+            <th>#</th>
+            <th>Name</th>
+            <th>Type</th>
+            <th>District</th>
+            <th>Update</th>
+            <th>Delete</th>
+        </tr>
+        {% for i in qa %}
+        <tr>
+            <td>{{forloop.counter}}</td>
+            <td>{{i.name}}</td>
+            <td>{{i.type}}</td>
+            <td>{{i.district.district}}</td>
+            <td class="text-center"><a href="/update_type/{{i.type_id}}" class="btn btn-success">Update</a></td>
+            <td class="text-center"><a href="/delete_type/{{i.type_id}}" class="btn btn-danger">Delete</a></td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+<br>
+{% include 'footer.html' %}

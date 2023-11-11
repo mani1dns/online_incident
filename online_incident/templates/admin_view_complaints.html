@@ -1,0 +1,79 @@
+{% include 'admin_header.html' %}
+
+<style>
+    /* Base styles */
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f0f0f0;
+        margin: 0;
+        padding: 0;
+    }
+
+    /* Styles for the table */
+    table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    table, th, td {
+        border: 1px solid #ddd;
+    }
+
+    th, td {
+        padding: 10px;
+        text-align: center;
+    }
+
+    th {
+        background-color: #0074cc;
+        color: #fff;
+    }
+
+    tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+
+    a {
+        text-decoration: none;
+        color: #0074cc;
+    }
+
+    /* Styles for the "Send Reply" button */
+    .send-reply-button {
+        background-color: #0074cc;
+        color: #fff;
+        border: none;
+        padding: 5px 10px;
+        cursor: pointer;
+    }
+</style>
+
+<br><br><br>
+
+<form action="" method="POST">
+    {% csrf_token %}
+    <table align="center" border="1">
+        <tr>
+            <th>#</th>
+            <th>Complaints</th>
+            <th>Reply</th>
+            <th>Date</th>
+            <th>Username</th>
+            <th>Send Reply</th>
+        </tr>
+        {% for i in qa %}
+        <tr>
+            <td>{{forloop.counter}}</td>
+            <td>{{i.complaints}}</td>
+            <td>{{i.reply}}</td>
+            <td>{{i.date}}</td>
+            <td>{{i.user.fname}}</td>
+            <td align="center">
+                <a href="send_reply?complaint_id={{i.complaint_id}}" class="btn btn-dark">REPLY</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+</form>
+
+{% include 'footer.html' %}

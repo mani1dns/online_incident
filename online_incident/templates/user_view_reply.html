@@ -1,0 +1,59 @@
+{% include 'user_header.html' %}
+
+<style>
+    /* Base styles */
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f0f0f0;
+        margin: 0;
+        padding: 0;
+    }
+
+    /* Styles for the table */
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 20px auto;
+    }
+
+    table, th, td {
+        border: 1px solid #ddd;
+    }
+
+    th, td {
+        padding: 10px;
+        text-align: center;
+    }
+
+    th {
+        background-color: #0074cc;
+        color: #fff;
+    }
+
+    tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+
+    /* Styles for the "complaint" and "REPLY" cells */
+    td {
+        max-width: 50%;
+        word-wrap: break-word;
+    }
+</style>
+
+<form action="" method="POST">
+    <table align="center" border="1">
+        <tr>
+            <th>complaint</th>
+            <th>REPLY</th>
+        </tr>
+        {% for i in qa %}
+        <tr>
+            <td>{{i.complaints}}</td>
+            <td>{{i.reply}}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</form>
+<br><br><br>
+{% include 'footer.html' %}

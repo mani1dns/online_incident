@@ -1,0 +1,180 @@
+{% include 'admin_header.html' %}
+
+<style>
+    /* Base styles */
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f0f0f0;
+        margin: 0;
+        padding: 0;
+    }
+
+    .content {
+        margin: 20px;
+        padding: 20px;
+        background-color: #fff;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+    }
+
+    /* Styles for forms */
+    .form-table {
+        width: 100%;
+        border-collapse: collapse;
+        border: 1px solid #ddd;
+    }
+
+    .form-table th {
+        text-align: left;
+        padding: 10px;
+    }
+
+    .form-table td {
+        padding: 10px;
+    }
+
+    .form-table select,
+    .form-table input[type="text"] {
+        width: 100%;
+        padding: 5px;
+    }
+
+    .submit-button {
+        background-color: #0074cc;
+        color: #fff;
+        border: none;
+        padding: 10px 20px;
+        cursor: pointer;
+    }
+
+    .submit-button:hover {
+        background-color: #005aa8;
+    }
+
+    /* Styles for data table */
+    .table-wrapper {
+        overflow-x: auto;
+    }
+
+    .data-table {
+        width: 100%;
+        border-collapse: collapse;
+        border: 1px solid #ddd;
+    }
+
+    .data-table th, .data-table td {
+        padding: 10px;
+        border: 1px solid #ddd;
+    }
+
+    .data-table th {
+        background-color: #0074cc;
+        color: #fff;
+    }
+
+    .action-link {
+        text-decoration: none;
+        color: #0074cc;
+    }
+
+    /* Responsive styles for smaller screens */
+    @media (max-width: 768px) {
+        .content {
+            margin: 10px;
+            padding: 10px;
+        }
+
+        .form-table select,
+        .form-table input[type="text"] {
+            width: 100%;
+        }
+
+        .submit-button {
+            width: 100%;
+        }
+
+        .data-table {
+            font-size: 12px;
+        }
+
+        .data-table th, .data-table td {
+            padding: 8px;
+        }
+    }
+</style>
+
+<div class="content">
+    {% if qz %}
+    <form action="" method="post">
+        {% csrf_token %}
+        <table class="form-table" align="center">
+            <tr>
+                <th>Block</th>
+                <td><input type="text" name="block" value="{{qz.block}}"></td>
+            </tr>
+            <tr>
+                <th>Type</th>
+                <td>
+                    <select name="type_name">
+                        {% for i in qt %}
+                        <option value="{{i.type_id}}">{{i.type}}</option>
+                        {% endfor %}
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" align="center"><input type="submit" name="update" class="submit-button" value="Update"></td>
+            </tr>
+        </table>
+    </form>
+    {% else %}
+    <form action="" method="post">
+        {% csrf_token %}
+        <table class="form-table" align="center">
+            <tr>
+                <th>Block</th>
+                <td><input type="text" name="block" required></td>
+            </tr>
+            <tr>
+                <th>Type</th>
+                <td>
+                    <select name="type_name">
+                        {% for i in qt %}
+                        <option value="{{i.type_id}}">{{i.type}}</option>
+                        {% endfor %}
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" align="center"><input type="submit" name="submit" class="btn btn-primary" value="Submit"></td>
+            </tr>
+        </table>
+    </form>
+    {% endif %}
+
+    <br><br><br>
+
+    <div class="table-wrapper">
+        <table class="data-table">
+            <tr>
+                <th>#</th>
+                <th>Block</th>
+                <th>Type</th>
+                <th>Update</th>
+                <th>Delete</th>
+            </tr>
+            {% for i in qa %}
+            <tr>
+                <td>{{forloop.counter}}</td>
+                <td>{{i.block}}</td>
+                <td>{{i.type.type}}</td>
+                <td class="text-center"><a href="/update_block/{{i.block_id}}" class="btn btn-success">Update</a></td>
+                <td class="text-center"><a href="/delete_block/{{i.block_id}}" class="btn btn-danger"> Delete </a></td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+</div>
+<br><br><br><br><br><br><br><br><br><br>
+
+{% include 'footer.html' %}

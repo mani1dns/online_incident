@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <table>
+        <tr>
+            <th>#</th>
+            <th>Comments : </th>
+            <th>Date : </th>
+            <th>Reply : </th>
+        </tr>
+        {% for i in q1 %}
+        <tr>
+            <td>{{i.comments}}</td>
+            <td>{{i.date}}</td>
+            
+            {{% if i.reply == 'pending' %}}
+                <td><a href="/user_add_reply/{{i.comment_id}}">Send Reply</a></td>
+            {% else %}
+                <td>{{i.reply}}</td>
+            {% endif %}
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

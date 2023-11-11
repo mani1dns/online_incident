@@ -1,0 +1,97 @@
+{% include 'user_header.html' %}
+<br>
+<style>
+    /* Base styles */
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f0f0f0;
+        margin: 0;
+        padding: 0;
+    }
+
+    /* Styles for the form and table */
+    form {
+        margin-top: 50px;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    table, th, td {
+        border: 1px solid #ddd;
+    }
+
+    th, td {
+        padding: 10px;
+        text-align: center;
+    }
+
+    th {
+        background-color: #0074cc;
+        color: #fff;
+    }
+
+    tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+
+    input[type="text"] {
+        width: 100%;
+        padding: 5px;
+    }
+
+    input[type="date"] {
+        width: 100%;
+        padding: 5px;
+    }
+
+    input[type="submit"] {
+        background-color: #0074cc;
+        color: #fff;
+        border: none;
+        padding: 5px 10px;
+        cursor: pointer;
+    }
+
+    /* Styles for the "VIEW REPLY" link */
+    .view-reply-link {
+        text-decoration: none;
+        background-color: #0074cc;
+        color: #fff;
+        padding: 5px 10px;
+        border: none;
+        cursor: pointer;
+        text-align: center;
+        display: block;
+        width: 100%;
+    }
+</style>
+<br><br><br><br><br><br>
+<center>
+    <form method="post">
+        <table border="1" align="center">
+            <tr>
+                <th>Complaint</th>
+                <td><input type="text" name="comp"></td>
+            </tr>
+            <tr>
+                <th>Date</th>
+                <td colspan="2" align="center"><input type="date" name="date"></td>
+            </tr>
+            <tr>
+                <td colspan="2" align="center"><input type="submit" name="submit" class="btn btn-primary"></td>
+            </tr>
+            <tr>
+                <td align="center" colspan="2">
+                    <a href="user_view_reply" class="btn btn-warning">VIEW REPLY</a>
+                </td>
+            </tr>
+        </table>
+    </form>
+
+    <BR> <BR> <BR> <BR> <BR><BR> <BR> <BR> <BR> <BR><br>
+</center>
+
+{% include 'footer.html' %}

@@ -1,0 +1,88 @@
+{% include 'user_header.html' %}
+
+<style>
+    /* Base styles */
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f0f0f0;
+        margin: 0;
+        padding: 0;
+    }
+
+    /* Styles for the form and table */
+    form {
+        text-align: center;
+        margin: 20px auto;
+    }
+
+    table {
+        border-collapse: collapse;
+        width: 50%;
+        margin: 20px auto;
+    }
+
+    table, th, td {
+        border: 1px solid #ddd;
+    }
+
+    th, td {
+        padding: 10px;
+        text-align: center;
+    }
+
+    th {
+        background-color: #0074cc;
+        color: #fff;
+    }
+
+    tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+
+    /* Styles for the "comment" input field */
+    input[type="text"] {
+        width: 100%;
+        padding: 8px;
+        box-sizing: border-box;
+    }
+
+    /* Styles for the "Date" input field */
+    input[type="date"] {
+        width: 100%;
+        padding: 8px;
+        box-sizing: border-box;
+    }
+
+    /* Styles for the submit button */
+    input[type="submit"] {
+        background-color: #0074cc;
+        color: #fff;
+        padding: 10px 20px;
+        border: none;
+        cursor: pointer;
+    }
+
+    input[type="submit"]:hover {
+        background-color: #005aa8;
+    }
+</style>
+
+<form action="" method="POST">
+    <table border="2" align="center">
+        <tr>
+            <th>Comment</th>
+            <td><input type="text" name="comment" required></td>
+        </tr>
+        <tr>
+            <th>Date</th>
+            <td><input type="date" name="date" required></td>
+        </tr>
+        <tr>
+            <td colspan="2" align="center"><input type="submit" name="submit" value="Submit" class="btn btn-primary"></td>
+        </tr>
+    </table>
+</form>
+
+
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+{% include 'footer.html' %}

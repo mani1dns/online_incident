@@ -1,0 +1,80 @@
+{% include 'officer_header.html' %}
+
+<style>
+    /* Base styles */
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f0f0f0;
+        margin: 0;
+        padding: 0;
+    }
+
+    /* Styles for the table */
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+    }
+
+    table, th, td {
+        border: 1px solid #ddd;
+    }
+
+    th, td {
+        padding: 10px;
+        text-align: center;
+    }
+
+    th {
+        background-color: #0074cc;
+        color: #fff;
+    }
+
+    tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+
+    a {
+        text-decoration: none;
+        color: #0074cc;
+    }
+
+    /* Styles for the "Update Status" link */
+    .update-link {
+        background-color: #0074cc;
+        color: #fff;
+        padding: 5px 10px;
+        border: none;
+        cursor: pointer;
+        text-decoration: none;
+    }
+</style>
+
+<body>
+    <form action="" method="POST" enctype="multipart/form-data">
+        <br><br>
+        <table border="1" align="center">
+            <tr>
+                <th>#</th>
+                <th>POST</th>
+                <th>DATE</th>
+                <th>TYPE</th>
+                <th>STATUS</th>
+            </tr>
+            {% for i in qa %}
+            <tr>
+                <td>{{forloop.counter}}</td>
+                <td>{{i.post}}</td>
+                <td>{{i.date}}</td>
+                <td>{{i.type}}</td>
+                <td>{{i.status}}</td>
+                <td colspan="2" align="center">
+                    <a href="officer_update/{{i.post_id}}" class="btn btn-success">Update Status</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+    </form>
+</body>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+{% include 'footer.html' %}

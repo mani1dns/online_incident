@@ -1,0 +1,62 @@
+{% include 'admin_header.html' %}
+
+<style>
+    /* Base styles */
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f0f0f0;
+        margin: 0;
+        padding: 0;
+    }
+
+    /* Styles for the table */
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+    }
+
+    table, th, td {
+        border: 1px solid #ddd;
+    }
+
+    th, td {
+        padding: 10px;
+        text-align: center;
+    }
+
+    th {
+        background-color: #0074cc;
+        color: #fff;
+    }
+
+    tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+</style>
+
+<body>
+    <form action="" method="POST">
+        {% csrf_token %}
+        <table border="1" align="center">
+            <tr>
+                <th>#</th>
+                <th>POST</th>
+                <th>DATE</th>
+                <th>TYPE</th>
+                <th>STATUS</th>
+            </tr>
+            {% for i in qa %}
+            <tr>
+                <td>{{forloop.counter}}</td>
+                <td>{{i.post}}</td>
+                <td>{{i.date}}</td>
+                <td>{{i.type}}</td>
+                <td>{{i.status}}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </form>
+</body>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+{% include 'footer.html' %}

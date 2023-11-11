@@ -1,0 +1,59 @@
+{% include "public_header.html" %}
+<style>
+    /* Style for the form container */
+    .form-container {
+        max-width: 400px;
+        margin: 0 auto;
+        padding: 20px;
+        border: 1px solid #ddd;
+        background-color: #f9f9f9;
+    }
+
+    /* Style for form labels and input fields */
+    .form-container label, .form-container input {
+        display: block;
+        margin-bottom: 10px;
+    }
+
+    /* Style for the submit button */
+    .form-container input[type="submit"] {
+        background-color: #0074cc;
+        color: #fff;
+        border: none;
+        padding: 10px 20px;
+        cursor: pointer;
+    }
+</style>
+<br><br><br>
+<div class="form-container">
+    <form action="" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <label for="fname">First Name</label>
+        <input type="text" name="fname" required>
+
+        <label for="lname">Last Name</label>
+        <input type="text" name="lname" required>
+
+        <label for="place">Place</label>
+        <input type="text" name="place" required>
+
+        <label for="block">Block</label>
+        <input type="text" name="block" required>
+
+        <label for="phone">Phone</label>
+        <input type="text" name="phone" required>
+
+        <label for="email">Email</label>
+        <input type="email" name="email" required>
+
+        <label for="uname">Username</label>
+        <input type="text" name="uname" required>
+
+        <label for="psw">Password</label>
+        <input type="password" name="psw" required>
+
+        <input type="submit" name="submit" value="Register">
+    </form>
+</div>
+<br><br>
+{% include "footer.html" %}
